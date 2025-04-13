@@ -19,6 +19,8 @@ Campus Bridge is a unified web application designed to serve as an end-to-end ac
 - *AI Assistance*: Get real-time code hints and debugging support
 - *Collaboration*: Join live group code rooms for pair programming
 - *Career Support*: Receive job recommendations based on skill profiles
+![Screenshot 2025-04-13 054234](https://github.com/user-attachments/assets/5176f65f-5ebc-44d7-ac70-4563c476dabd)
+
 
 ### Faculty & Trainer Panel
 - *Content Management*: Upload and schedule academic materials (PDFs, videos, quizzes)
