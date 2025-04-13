@@ -1,11 +1,22 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { 
-  Select, SelectContent, SelectItem, SelectTrigger, SelectValue 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from '@/components/ui/select';
 import { Play, Save, Trash2, Copy, Lightbulb } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
+import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { toast } from '@/components/ui/use-toast';
 
@@ -14,19 +25,14 @@ interface CodeEditorProps {
   initialLanguage?: string;
 }
 
-export const CodeEditor = ({
-  initialCode = '// Write your code here\n',
-  initialLanguage = 'javascript'
+export const CodeEditor = ({ 
+  initialCode = '// Write your code here\n', 
+  initialLanguage = 'javascript' 
 }: CodeEditorProps) => {
   const [code, setCode] = useState(initialCode);
   const [language, setLanguage] = useState(initialLanguage);
   const [output, setOutput] = useState('');
   const [isRunning, setIsRunning] = useState(false);
-  const [testResults, setTestResults] = useState({
-    basic: 'Not run',
-    edge: 'Not run',
-    performance: 'Not run'
-  });
 
   const languageOptions = [
     { value: 'javascript', label: 'JavaScript' },
@@ -61,27 +67,27 @@ export const CodeEditor = ({
   const handleRun = () => {
     setIsRunning(true);
     setOutput('');
-    setTestResults({ basic: 'Not run', edge: 'Not run', performance: 'Not run' });
-
+    
+    // Simulate running code
     setTimeout(() => {
       let simulatedOutput = '';
-      let simulatedTestResults = { basic: 'Passed', edge: 'Passed', performance: 'Passed' };
-
-      if (code.includes('console.log("Hello, World!")') || code.includes('print("Hello, World!")') || code.includes('System.out.println("Hello, World!")')) {
+      
+      // Mock execution for demo
+      if (code.includes('print') || code.includes('console.log') || code.includes('System.out.println')) {
         simulatedOutput = 'Hello, World!\n';
+      } else if (language === 'javascript' && code.includes('Error')) {
+        simulatedOutput = 'Uncaught ReferenceError: Error is not defined\n  at <anonymous>:1:1';
+      } else if (language === 'python' && code.includes('error')) {
+        simulatedOutput = 'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\nNameError: name \'error\' is not defined';
       } else {
         simulatedOutput = 'Program executed successfully with no output.\n';
-        simulatedTestResults.edge = 'Failed';
       }
-
-      if (code.includes('loop') || code.includes('for') || code.includes('while')) {
+      
+      if (code.includes('loop') || code.includes('while') || code.includes('for')) {
         simulatedOutput += 'Execution time: 0.032s\nMemory used: 4.2 MB\n';
-      } else {
-        simulatedTestResults.performance = 'Failed';
       }
-
+      
       setOutput(simulatedOutput);
-      setTestResults(simulatedTestResults);
       setIsRunning(false);
     }, 1500);
   };
@@ -97,7 +103,6 @@ export const CodeEditor = ({
   const handleClear = () => {
     setCode(getBoilerplate(language));
     setOutput('');
-    setTestResults({ basic: 'Not run', edge: 'Not run', performance: 'Not run' });
   };
 
   const handleGetHint = () => {
@@ -108,7 +113,7 @@ export const CodeEditor = ({
       cpp: "Make sure your pointers are properly initialized and memory is managed.",
       c: "Check for buffer overflows and proper memory allocation."
     };
-
+    
     toast({
       title: "Coding Hint",
       description: hints[language as keyof typeof hints] || "Try breaking down your problem into smaller steps.",
@@ -131,29 +136,50 @@ export const CodeEditor = ({
               ))}
             </SelectContent>
           </Select>
-
+          
           <Badge variant="outline" className="font-mono text-xs">
             {language.toUpperCase()}
           </Badge>
         </div>
-
+        
         <div className="flex gap-2">
-          <Button variant="outline" size="sm" onClick={handleGetHint} title="Get a hint">
-            <Lightbulb className="h-4 w-4 mr-2" /> Hint
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={handleGetHint}
+            title="Get a hint"
+          >
+            <Lightbulb className="h-4 w-4 mr-2" />
+            Hint
           </Button>
-          <Button variant="outline" size="sm" onClick={handleCopy} title="Copy code">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={handleCopy}
+            title="Copy code"
+          >
             <Copy className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="sm" onClick={handleClear} title="Clear code">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={handleClear}
+            title="Clear code"
+          >
             <Trash2 className="h-4 w-4" />
           </Button>
-          <Button variant="default" size="sm" onClick={handleRun} disabled={isRunning}>
+          <Button 
+            variant="default" 
+            size="sm" 
+            onClick={handleRun}
+            disabled={isRunning}
+          >
             <Play className="h-4 w-4 mr-2" />
             {isRunning ? 'Running...' : 'Run'}
           </Button>
         </div>
       </div>
-
+      
       <div className="grid grid-cols-1 lg:grid-cols-2 h-[calc(100vh-26rem)]">
         <Textarea
           className="min-h-[400px] font-mono p-4 text-sm resize-none rounded-none h-full"
@@ -161,7 +187,7 @@ export const CodeEditor = ({
           onChange={(e) => setCode(e.target.value)}
           placeholder="Write your code here..."
         />
-
+        
         <div className="border-l lg:border-t-0 border-t">
           <Tabs defaultValue="output">
             <div className="border-b">
@@ -171,7 +197,7 @@ export const CodeEditor = ({
                 <TabsTrigger value="tests">Tests</TabsTrigger>
               </TabsList>
             </div>
-
+            
             <TabsContent value="output" className="m-0">
               <div className="p-4 bg-slate-950 text-gray-100 font-mono text-sm h-[calc(100vh-28rem)] overflow-auto">
                 {isRunning ? (
@@ -186,13 +212,13 @@ export const CodeEditor = ({
                 )}
               </div>
             </TabsContent>
-
+            
             <TabsContent value="console" className="m-0">
               <div className="p-4 bg-slate-950 text-gray-100 font-mono text-sm h-[calc(100vh-28rem)] overflow-auto">
                 <div className="text-slate-400">Console logs will appear here</div>
               </div>
             </TabsContent>
-
+            
             <TabsContent value="tests" className="m-0">
               <div className="p-4 font-mono text-sm h-[calc(100vh-28rem)] overflow-auto">
                 <div className="mb-4">
@@ -200,15 +226,15 @@ export const CodeEditor = ({
                   <div className="space-y-2">
                     <div className="p-2 border rounded bg-muted/30 flex justify-between">
                       <span>Basic test case</span>
-                      <Badge variant="outline">{testResults.basic}</Badge>
+                      <Badge variant="outline">Not run</Badge>
                     </div>
                     <div className="p-2 border rounded bg-muted/30 flex justify-between">
                       <span>Edge cases</span>
-                      <Badge variant="outline">{testResults.edge}</Badge>
+                      <Badge variant="outline">Not run</Badge>
                     </div>
                     <div className="p-2 border rounded bg-muted/30 flex justify-between">
                       <span>Performance test</span>
-                      <Badge variant="outline">{testResults.performance}</Badge>
+                      <Badge variant="outline">Not run</Badge>
                     </div>
                   </div>
                 </div>
