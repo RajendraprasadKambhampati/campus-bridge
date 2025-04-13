@@ -30,7 +30,8 @@ Campus Bridge is a unified web application designed to serve as an end-to-end ac
 - *Content Management*: Upload and schedule academic materials (PDFs, videos, quizzes)
 - *Assignment Creation*: Design coding assignments with custom test cases
 - *Progress Monitoring*: Track student performance through analytics dashboards
-![Screenshot 2025-04-13 054429](https://github.com/user-attachments/assets/415ddd26-c23b-4767-bc1b-b289d02ca1ac)
+  ![image](https://github.com/user-attachments/assets/a61d7c6c-2da6-4071-bd58-1e31905eb985)
+
 
 
 ### Admin/Placement Panel
