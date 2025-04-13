@@ -10,6 +10,10 @@
 Campus Bridge is a unified web application designed to serve as an end-to-end academic and coding skill development environment for university students. The platform integrates Learning Management System (LMS) capabilities with advanced coding training modules and AI-assisted features to create a comprehensive educational ecosystem.
 
 ## Features
+![Screenshot 2025-04-13 054519](https://github.com/user-attachments/assets/f070c193-737b-448d-b4b1-91ce570c067c)
+
+![Screenshot 2025-04-13 054400](https://github.com/user-attachments/assets/f0306a46-42a8-44ef-8aa0-c9b27d092449)
+
 
 ### Student Interface
 - *Academic Management*: Access courses, lecture materials, assignments, and attendance records
@@ -26,12 +30,16 @@ Campus Bridge is a unified web application designed to serve as an end-to-end ac
 - *Content Management*: Upload and schedule academic materials (PDFs, videos, quizzes)
 - *Assignment Creation*: Design coding assignments with custom test cases
 - *Progress Monitoring*: Track student performance through analytics dashboards
+![Screenshot 2025-04-13 054429](https://github.com/user-attachments/assets/415ddd26-c23b-4767-bc1b-b289d02ca1ac)
+
 
 ### Admin/Placement Panel
 - *Analytics Dashboard*: View aggregate skill metrics and coding leaderboards
 - *Placement Readiness*: Monitor student eligibility and readiness for placements
 - *Event Management*: Schedule mock tests and coding contests
 - *Reporting*: Generate and export performance reports
+![Screenshot 2025-04-13 054439](https://github.com/user-attachments/assets/d9caabc9-af55-4cd7-9dd4-4212a1cff465)
+
 
 ## Technology Stack
 
@@ -52,36 +60,10 @@ Campus Bridge is a unified web application designed to serve as an end-to-end ac
 - *JWT (JSON Web Tokens)*: Secure authentication mechanism
 
 ## Project Structure
+![image](https://github.com/user-attachments/assets/80043902-65fb-4fdb-b89e-ebc81063def1)
 
 
-campus-bridge/
-├── client/                  # Frontend React application
-│   ├── public/              # Static files
-│   ├── src/                 # React source code
-│   │   ├── components/      # Reusable UI components
-│   │   ├── pages/           # Application pages
-│   │   ├── services/        # API service calls
-│   │   ├── styles/          # Global styles
-│   │   ├── types/           # TypeScript type definitions
-│   │   ├── utils/           # Utility functions
-│   │   ├── App.tsx          # Main application component
-│   │   └── index.tsx        # Application entry point
-│   └── package.json         # Frontend dependencies
-│
-├── server/                  # Backend Node.js application
-│   ├── config/              # Configuration files
-│   ├── controllers/         # Route controllers
-│   ├── middlewares/         # Express middlewares
-│   ├── models/              # Database models
-│   ├── routes/              # API routes
-│   ├── services/            # Business logic
-│   ├── utils/               # Utility functions
-│   ├── app.js               # Express application setup
-│   └── package.json         # Backend dependencies
-│
-├── .gitignore               # Specifies intentionally untracked files
-├── README.md                # Project documentation (this file)
-└── package.json             # Root project configuration (if using monorepo)
+
 
 
 ## Getting Started
@@ -163,12 +145,16 @@ Campus Bridge is a unified digital platform designed to bridge the gap between a
    - Interactive coding tracks (DSA, Web Dev, Python, Java) with an integrated online compiler.  
    - Structured problem-solving exercises with real-time feedback.  
    - Performance analytics, skill heatmaps, and achievement badges.  
+![Screenshot 2025-04-13 054253](https://github.com/user-attachments/assets/1dfa20d4-1e5d-4073-b244-d0851fe99500)
+
 
 3. *AI-Powered Assistance*  
    - *Smart Code Debugger*: Real-time hints and logic corrections using AI (Gemini/GPT).  
    - *Live Code Collaboration*: Pair programming in shared virtual coding rooms.  
    - *Job Match Recommender*: AI-driven career suggestions based on skill profiles.  
-   - *Code Review Bot*: Automated feedback on code quality and best practices.  
+   - *Code Review Bot*: Automated feedback on code quality and best practices. 
+   ![Screenshot 2025-04-13 054342](https://github.com/user-attachments/assets/d48a23e2-85ea-43c6-8d81-a55df272d055)
+ 
 
 4. *Admin & Placement Support*  
    - Dashboard for tracking student progress, coding leaderboards, and placement readiness.  
